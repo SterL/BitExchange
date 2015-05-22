@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ title }}</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>{{ title }}</h1>
+    </br>
+    <h2>Going Rate For Various Cryptocurrencies From Various Exchanges In USD ($)</h2>
+
+	<table border="1" style="width:100%">
+  		<tr>
+    		<th></th>
+    		<th>BTC-E Exchange ($)</th> 
+    		<th>Cryptsy Exchange ($)</th>
+    		<th>Cryptonator ($)</th>
+  		</tr>
+  		<tr>
+    		<th>BTC</th>
+    		<td> ${{ btce_btc.btc_usd.sell }}</td>
+    		<td> ${{ cryptsy_btc.data.bid }}</td>
+    		<td> ${{ cryptonator_btc.ticker.price }}</td>
+  		</tr>
+  		<tr>
+  			<th>LTC</th>
+  			<td> ${{ btce_ltc.ltc_usd.sell }} </td>
+  			<td> ${{ cryptsy_ltc.data.bid }} </td>
+  			<td> ${{ cryptonator_ltc.ticker.price }} </td>
+  		</tr>
+  		<tr>
+  			<th>PPC</th>
+  			<td> ${{ btce_ppc.ppc_usd.sell }} </td>
+  			<td> ${{ cryptsy_ppc.data.bid }} </td>
+  			<td> ${{ cryptonator_ppc.ticker.price }} </td>
+  		</tr>
+  		<tr>
+  			<th>DASH</th>
+  			<td> $ ? </td>
+  			<td> ${{ cryptsy_dash.data.bid }} </td>
+  			<td> ${{ cryptonator_dash.ticker.price }} </td>
+  		</tr>
+	</table>
+
+
+  </body>
+</html>
