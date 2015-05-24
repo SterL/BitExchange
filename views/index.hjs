@@ -6,8 +6,11 @@
   </head>
   <body>
     <h1>{{ title }}</h1>
+    <h3><a href="/">Home</a> <a href="/about">About</a></h3>
     </br>
     <h2>Going Rate For Various Cryptocurrencies From Various Exchanges In $USD</h2>
+	<h3 style="color: #00FF00">BUY </h3>
+	<h3 style="color: #FF0000">DON'T BUY</h3>
 
 	{{ex.setColors}} 
 	<table border="1" style="width:100%">
@@ -19,31 +22,73 @@
   		</tr>
   		<tr>
     		<th>BTC</th>
-    		<td bgcolor={{ex.BTCEExchange.btcColor}} > ${{ ex.BTCEExchange.btc }}</td>
-    		<td bgcolor={{ex.cryptsyExchange.btcColor}} > ${{ ex.cryptsyExchange.btc }}</td>
-    		<td bgcolor={{ex.cryptonatorExchange.btcColor}} > ${{ ex.cryptonatorExchange.btc }}</td>
+    		<td bgcolor={{ex.BTCEExchange.btcUSDColor}} > ${{ ex.BTCEExchange.btc }}</td>
+    		<td bgcolor={{ex.cryptsyExchange.btcUSDColor}} > ${{ ex.cryptsyExchange.btc }}</td>
+    		<td bgcolor={{ex.cryptonatorExchange.btcUSDColor}} > ${{ ex.cryptonatorExchange.btc }}</td>
   		</tr>
   		<tr>
   			<th>LTC</th>
-  			<td bgcolor={{ex.BTCEExchange.ltcColor}}> ${{ ex.BTCEExchange.ltc }} </td>
-  			<td bgcolor={{ex.cryptsyExchange.ltcColor}}> ${{ ex.cryptsyExchange.ltc }} </td>
-  			<td bgcolor={{ex.cryptonatorExchange.ltcColor}}> ${{ ex.cryptonatorExchange.ltc }} </td>
+  			<td bgcolor={{ex.BTCEExchange.ltcUSDColor}}> ${{ ex.BTCEExchange.ltc }} </td>
+  			<td bgcolor={{ex.cryptsyExchange.ltcUSDColor}}> ${{ ex.cryptsyExchange.ltc }} </td>
+  			<td bgcolor={{ex.cryptonatorExchange.ltcUSDColor}}> ${{ ex.cryptonatorExchange.ltc }} </td>
   		</tr>
   		<tr>
   			<th>PPC</th>
-  			<td bgcolor={{ex.BTCEExchange.ppcColor}}> ${{ ex.BTCEExchange.ppc }} </td>
-  			<td bgcolor={{ex.cryptsyExchange.ppcColor}}> ${{ ex.cryptsyExchange.ppc }} </td>
-  			<td bgcolor={{ex.cryptonatorExchange.ppcColor}}> ${{ ex.cryptonatorExchange.ppc }} </td>
+  			<td bgcolor={{ex.BTCEExchange.ppcUSDColor}}> ${{ ex.BTCEExchange.ppc }} </td>
+  			<td bgcolor={{ex.cryptsyExchange.ppcUSDColor}}> ${{ ex.cryptsyExchange.ppc }} </td>
+  			<td bgcolor={{ex.cryptonatorExchange.ppcUSDColor}}> ${{ ex.cryptonatorExchange.ppc }} </td>
   		</tr>
   		<tr>
   			<th>DASH</th>
-  			<td bgcolor={{ex.BTCEExchange.dashColor}}> $ ? </td>
-  			<td bgcolor={{ex.cryptsyExchange.dashColor}}> ${{ ex.cryptsyExchange.dash}} </td>
-  			<td bgcolor={{ex.cryptonatorExchange.dashColor}}> ${{ ex.cryptonatorExchange.dash }} </td>
+  			<td bgcolor={{ex.BTCEExchange.dashUSDColor}}> $ ? </td>
+  			<td bgcolor={{ex.cryptsyExchange.dashUSDColor}}> ${{ ex.cryptsyExchange.dash}} </td>
+  			<td bgcolor={{ex.cryptonatorExchange.dashUSDColor}}> ${{ ex.cryptonatorExchange.dash }} </td>
+  		</tr>
+	</table>
+
+   </br>
+
+   
+    <h2>Conversion Rate for Bitcoin</h2>
+    <h3 style="color: #00FF00">SELL</h3>
+    <h3 style="color: #FF0000">DON'T SELL</h3>
+	{{ ex.calculateConversion }}
+	<table border="1" style="width:100%">
+  		<tr>
+    		<th></th>
+    		<th>BTC-E Exchange (Coins)</th> 
+    		<th>Cryptsy Exchange (Coins)</th>
+    		<th>Cryptonator (Coins)</th>
+  		</tr>
+  		<tr>
+    		<th>BTC</th>
+    		<td bgcolor={{ex.BTCEExchange.btcConversionColor}}> {{ ex.BTCEExchange.btcPerbtc }} BTC</td>
+    		<td bgcolor={{ex.cryptsyExchange.btcConversionColor}}> {{ ex.cryptsyExchange.btcPerbtc }} BTC</td>
+    		<td bgcolor={{ex.cryptonatorExchange.btcConversionColor}}> {{ ex.cryptonatorExchange.btcPerbtc }} BTC</td>
+  		</tr>
+  		<tr>
+  			<th>LTC</th>
+  			<td bgcolor={{ex.BTCEExchange.ltcConversionColor}}> {{ ex.BTCEExchange.ltcPerbtc }} LTC</td>
+  			<td bgcolor={{ex.cryptsyExchange.ltcConversionColor}}> {{ ex.cryptsyExchange.ltcPerbtc }} LTC</td>
+  			<td bgcolor={{ex.cryptonatorExchange.ltcConversionColor}}> {{ ex.cryptonatorExchange.ltcPerbtc }} LTC</td>
+  		</tr>
+  		<tr>
+  			<th>PPC</th>
+  			<td bgcolor={{ex.BTCEExchange.ppcConversionColor}}> {{ ex.BTCEExchange.ppcPerbtc }} PPC</td>
+  			<td bgcolor={{ex.cryptsyExchange.ppcConversionColor}}> {{ ex.cryptsyExchange.ppcPerbtc }} PPC</td>
+  			<td bgcolor={{ex.cryptonatorExchange.ppcConversionColor}}> {{ ex.cryptonatorExchange.ppcPerbtc }} PPC</td>
+  		</tr>
+  		<tr>
+  			<th>DASH</th>
+  			<td bgcolor={{ex.BTCEExchange.dashConversionColor}}> ? DASH</td>
+  			<td bgcolor={{ex.cryptsyExchange.dashConversionColor}}> {{ ex.cryptsyExchange.dashPerbtc}} DASH</td>
+  			<td bgcolor={{ex.cryptonatorExchange.dashConversionColor}}> {{ ex.cryptonatorExchange.dashPerbtc }} DASH</td>
   		</tr>
 	</table>
 
 	<p> (If one of the columns is not displayed, refresh the page) </p>
+
+
 
   </body>
 </html>

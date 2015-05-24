@@ -6,8 +6,10 @@
   </head>
   <body>
     <h1>{{ title }}</h1>
-
-	<p> Created by Sterling Zerr </p></br>
+    <h3><a href="/">Home</a> <a href="/about">About</a></h3>
+    </br>
+	<p> Created by Sterling Zerr </p>
+    </br>
 
   </body>
 </html>
