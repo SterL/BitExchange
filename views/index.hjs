@@ -56,9 +56,9 @@
 	<table border="1" style="width:100%">
   		<tr>
     		<th></th>
-    		<th>BTC-E Exchange (Coins)</th> 
-    		<th>Cryptsy Exchange (Coins)</th>
-    		<th>Cryptonator (Coins)</th>
+    		<th>BTC-E Exchange (Coins per BTC)</th> 
+    		<th>Cryptsy Exchange (Coins per BTC)</th>
+    		<th>Cryptonator (Coins per BTC)</th>
   		</tr>
   		<tr>
     		<th>BTC</th>
