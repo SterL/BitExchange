@@ -13,7 +13,14 @@ var BTCE_USD = {
 	btc: "",
 	ltc: "",
 	ppc: "",
-	dash: ""
+	dash: "",
+	ltcPerbtc: "",
+	ppcPerbtc: "",
+	dashPerbtc: "",
+	btcColor: "",
+	ltcColor: "",
+	ppcColor: "",
+	dashColor: ""
 };
 request({
     url: urlBTCE_USD,
@@ -36,7 +43,14 @@ var cryptsy_USD = {
 	btc: "",
 	ltc: "",
 	ppc: "",
-	dash: ""
+	dash: "",
+	ltcPerbtc: "",
+	ppcPerbtc: "",
+	dashPerbtc: "",
+	btcColor: "",
+	ltcColor: "",
+	ppcColor: "",
+	dashColor: ""
 };
 request({
     url: urlCryptsy_USD,
@@ -46,21 +60,20 @@ request({
 
     	for (var i = 0; i < body.data.length; i++) {
     		if (body.data[i].id == 2) {
-    			cryptsy_USD.btc = body.data[i].bid;
+    			cryptsy_USD.btc = body.data[i].ask;
     		}
     		if (body.data[i].id == 1) {
-    			cryptsy_USD.ltc = body.data[i].bid;
+    			cryptsy_USD.ltc = body.data[i].ask;
     		}
     		if (body.data[i].id == 305) {
-    			cryptsy_USD.ppc = body.data[i].bid;
+    			cryptsy_USD.ppc = body.data[i].ask;
     		}
     		if (body.data[i].id == 213) {
-    			cryptsy_USD.dash = body.data[i].bid;
+    			cryptsy_USD.dash = body.data[i].ask;
     		}
     	}
     }
   })
-
 
 
 /**
@@ -68,13 +81,19 @@ request({
  *  bitcoins, litecoins, peercoins, and dashcoins. This API does not
  *  support chaining so multiple requests were made.
 **/
-
 var urlCryptonator_BTC = "https://www.cryptonator.com/api/ticker/btc-usd";
 var cryptonator_USD = {
 	btc: "",
 	ltc: "",
 	ppc: "",
-	dash: ""
+	dash: "",
+	ltcPerbtc: "",
+	ppcPerbtc: "",
+	dashPerbtc: "",
+	btcColor: "",
+	ltcColor: "",
+	ppcColor: "",
+	dashColor: ""
 };
 request({
     url: urlCryptonator_BTC,
@@ -123,11 +142,73 @@ request({
 /**
  *  This object holds the BTCE_USD, cryptsy_USD, and cryptonator_USD objects
  *  so that we only have to pass this single object to our view.
+ *
+ *  foo is a function for the logic that appends the proper color for each cell.
 **/
 var exchanges = {
   BTCEExchange: BTCE_USD,
   cryptsyExchange: cryptsy_USD,
-  cryptonatorExchange: cryptonator_USD
+  cryptonatorExchange: cryptonator_USD,
+  setColors: function() {
+  	if (exchanges.BTCEExchange.btc < exchanges.cryptsyExchange.btc && exchanges.BTCEExchange.btc < exchanges.cryptonatorExchange.btc) {
+		exchanges.BTCEExchange.btcColor = "#00FF00";
+		exchanges.cryptsyExchange.btcColor = "#FF0000";
+		exchanges.cryptonatorExchange.btcColor = "#FF0000";
+	}
+	else if (exchanges.cryptsyExchange.btc < exchanges.BTCEExchange.btc && exchanges.cryptsyExchange.btc < exchanges.cryptonatorExchange.btc) {
+		exchanges.cryptsyExchange.btcColor = "#00FF00";
+		exchanges.BTCEExchange.btcColor = "#FF0000";
+		exchanges.cryptonatorExchange.btcColor = "#FF0000";
+	}
+	else if (exchanges.cryptonatorExchange.btc < exchanges.BTCEExchange.btc && exchanges.cryptonatorExchange.btc < exchanges.cryptsyExchange.btc) {
+		exchanges.cryptonatorExchange.btcColor = "#00FF00";
+		exchanges.cryptsyExchange.btcColor = "#FF0000";
+		exchanges.BTCEExchange.btcColor = "#FF0000";
+	}
+
+	if (exchanges.BTCEExchange.ltc < exchanges.cryptsyExchange.ltc && exchanges.BTCEExchange.ltc < exchanges.cryptonatorExchange.ltc) {
+		exchanges.BTCEExchange.ltcColor = "#00FF00";
+		exchanges.cryptsyExchange.ltcColor = "#FF0000";
+		exchanges.cryptonatorExchange.ltcColor = "#FF0000";
+	}
+	else if (exchanges.cryptsyExchange.ltc < exchanges.BTCEExchange.ltc && exchanges.cryptsyExchange.ltc < exchanges.cryptonatorExchange.ltc) {
+		exchanges.cryptsyExchange.ltcColor = "#00FF00";
+		exchanges.BTCEExchange.ltcColor = "#FF0000";
+		exchanges.cryptonatorExchange.ltcColor = "#FF0000";
+	}
+	else if (exchanges.cryptonatorExchange.ltc < exchanges.BTCEExchange.ltc && exchanges.cryptonatorExchange.ltc < exchanges.cryptsyExchange.ltc) {
+		exchanges.cryptonatorExchange.ltcColor = "#00FF00";
+		exchanges.cryptsyExchange.ltcColor = "#FF0000";
+		exchanges.BTCEExchange.ltcColor = "#FF0000";
+	}
+
+	if (exchanges.BTCEExchange.ppc < exchanges.cryptsyExchange.ppc && exchanges.BTCEExchange.ppc < exchanges.cryptonatorExchange.ppc) {
+		exchanges.BTCEExchange.ppcColor = "#00FF00";
+		exchanges.cryptsyExchange.ppcColor = "#FF0000";
+		exchanges.cryptonatorExchange.ppcColor = "#FF0000";
+	}
+	else if (exchanges.cryptsyExchange.ppc < exchanges.BTCEExchange.ppc && exchanges.cryptsyExchange.ppc < exchanges.cryptonatorExchange.ppc) {
+		exchanges.cryptsyExchange.ppcColor = "#00FF00";
+		exchanges.BTCEExchange.ppcColor = "#FF0000";
+		exchanges.cryptonatorExchange.ppcColor = "#FF0000";
+	}
+	else if (exchanges.cryptonatorExchange.ppc < exchanges.BTCEExchange.ppc && exchanges.cryptonatorExchange.ppc < exchanges.cryptsyExchange.ppc) {
+		exchanges.cryptonatorExchange.ppcColor = "#00FF00";
+		exchanges.cryptsyExchange.ppcColor = "#FF0000";
+		exchanges.BTCEExchange.ppcColor = "#FF0000";
+	}
+
+	if (exchanges.cryptsyExchange.dash < exchanges.cryptonatorExchange.dash) {
+		exchanges.cryptsyExchange.dashColor = "#00FF00";
+		exchanges.BTCEExchange.dashColor = "#FF0000";
+		exchanges.cryptonatorExchange.dashColor = "#FF0000";
+	}
+	else if (exchanges.cryptonatorExchange.dash < exchanges.cryptsyExchange.dash) {
+		exchanges.cryptonatorExchange.dashColor = "#00FF00";
+		exchanges.cryptsyExchange.dashColor = "#FF0000";
+		exchanges.BTCEExchange.dashColor = "#FF0000";
+	}
+  }
 };
 
 
@@ -135,7 +216,6 @@ var exchanges = {
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Bit Exchange', ex: exchanges });
 });
-
 
 
 module.exports = router;
