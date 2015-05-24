@@ -7,7 +7,7 @@
   <body>
     <h1>{{ title }}</h1>
     </br>
-    <h2>Going Rate For Various Cryptocurrencies From Various Exchanges In USD ($)</h2>
+    <h2>Going Rate For Various Cryptocurrencies From Various Exchanges In $USD</h2>
 
 	<table border="1" style="width:100%">
   		<tr>
@@ -18,31 +18,29 @@
   		</tr>
   		<tr>
     		<th>BTC</th>
-    		<td> ${{ btce_btc.btc_usd.sell }}</td>
-    		<td> ${{ cryptsy_btc.data.bid }}</td>
-    		<td> ${{ cryptonator_btc.ticker.price }}</td>
+    		<td> ${{ ex.BTCEExchange.btc }}</td>
+    		<td> ${{ ex.cryptsyExchange.btc }}</td>
+    		<td> ${{ ex.cryptonatorExchange.btc }}</td>
   		</tr>
   		<tr>
   			<th>LTC</th>
-  			<td> ${{ btce_ltc.ltc_usd.sell }} </td>
-  			<td> ${{ cryptsy_ltc.data.bid }} </td>
-  			<td> ${{ cryptonator_ltc.ticker.price }} </td>
+  			<td> ${{ ex.BTCEExchange.ltc }} </td>
+  			<td> ${{ ex.cryptsyExchange.ltc }} </td>
+  			<td> ${{ ex.cryptonatorExchange.ltc }} </td>
   		</tr>
   		<tr>
   			<th>PPC</th>
-  			<td> ${{ btce_ppc.ppc_usd.sell }} </td>
-  			<td> ${{ cryptsy_ppc.data.bid }} </td>
-  			<td> ${{ cryptonator_ppc.ticker.price }} </td>
+  			<td> ${{ ex.BTCEExchange.ppc }} </td>
+  			<td> ${{ ex.cryptsyExchange.ppc }} </td>
+  			<td> ${{ ex.cryptonatorExchange.ppc }} </td>
   		</tr>
   		<tr>
   			<th>DASH</th>
   			<td> $ ? </td>
-  			<td> ${{ cryptsy_dash.data.bid }} </td>
-  			<td> ${{ cryptonator_dash.ticker.price }} </td>
+  			<td> ${{ ex.cryptsyExchange.dash}} </td>
+  			<td> ${{ ex.cryptonatorExchange.dash }} </td>
   		</tr>
 	</table>
-
-	</br>
 
 	<p> (If one of the columns is not displayed, refresh the page) </p>
 
